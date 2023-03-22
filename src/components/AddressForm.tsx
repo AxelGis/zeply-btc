@@ -22,7 +22,7 @@ export const AddressForm: React.FC<FormProps> = observer(({address}) => {
                     <Grid item xs={8}>{calcExchange(address?.total_received,exchange.value)}  {exchange.curr}</Grid>
                     <Grid item xs={4}>Spent:</Grid>
                     <Grid item xs={8}>{calcExchange(address?.total_sent,exchange.value)}  {exchange.curr}</Grid>
-                    <Grid item xs={4}>Confirmed:</Grid><Grid item xs={8}>{address?.n_tx}</Grid>
+                    <Grid item xs={4}>Confirmed:</Grid><Grid item xs={8}>{address?.n_tx - address?.n_unredeemed}</Grid>
                     <Grid item xs={4}>Unspent:</Grid><Grid item xs={8}>{address?.n_unredeemed}</Grid>
                 </Grid>
             }

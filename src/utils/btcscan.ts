@@ -45,7 +45,7 @@ export const GetTxInfo = async (hash: string):Promise<Tx | null> => {
 }
 
 export const GetLatestBlock = async ():Promise<number> => {
-    const url:string = `https://blockchain.info/latestblock?cors=true`;
+    const url:string = `https://blockchain.info/latestblock`;
 
     const res = await fetch(url);
     const data:LatestBlock = await res.json();
