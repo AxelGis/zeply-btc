@@ -12,7 +12,7 @@ export const Currencies: React.FC<CurrProps> = observer(() => {
 
     const updateTicker = () => {
         exchange.getTicker();
-        timer = setTimeout(updateTicker, 10000);
+        timer = setTimeout(updateTicker, 30000);
     }
 
     useEffect(() => {

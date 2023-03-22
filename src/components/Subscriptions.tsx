@@ -37,7 +37,7 @@ export const Subscriptions: React.FC = () => {
             }
             type === 'Address' ? setCacheSubAddr(cache as Address[]) : setCacheSubTx(cache as Tx[]);
         });
-        timer = setTimeout(updateSubscriptions, 10000);
+        timer = setTimeout(updateSubscriptions, 30000);
     }
 
     const checkUpdate = (type:string, data:GenericObject) => {
