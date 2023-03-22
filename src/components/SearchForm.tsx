@@ -56,7 +56,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({type}) => {
     useEffect(() => {
         const topCache:string[] = getSubscription(`${type}_cache`);
         setCache(topCache);
-    }, []);
+    }, [type]);
 
     return (
         <Grid item xs={12} sm={6}>

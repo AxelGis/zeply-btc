@@ -77,7 +77,7 @@ export const Subscriptions: React.FC = () => {
         return () => {
             clearTimeout(timer);
         };
-    }, []);
+    });
 
     return (
         <div>
