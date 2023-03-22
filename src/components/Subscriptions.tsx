@@ -50,7 +50,7 @@ export const Subscriptions: React.FC = () => {
         if(old){
             let alert:string[] = [];
             for(let key in data){
-                if(old[key] && old[key] !== data[key]){
+                if(old[key] && (typeof old[key] === "string" || typeof old[key] ===  "number") && old[key] !== data[key]){
                     alert.push("Hash update: " + (type === 'Address' ? data['address'] : data['hash']));
                     alert.push(`${key}: ${data[key]}`);
                 }
