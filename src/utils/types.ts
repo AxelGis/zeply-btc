@@ -32,11 +32,13 @@ export type TxOut = {
     value: number
 }
 
+export type LatestBlockRequest = {
+    data: LatestBlock,
+    status: string
+}
+
 export type LatestBlock = {
-    block_index: number,
-    hash: string,
     height: number,
-    time: number
 }
 
 export type Ticker = {

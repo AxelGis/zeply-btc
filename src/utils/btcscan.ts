@@ -1,4 +1,4 @@
-import { Address, LatestBlock, Ticker, Tx, TxInput, TxOut } from "./types";
+import { Address, LatestBlockRequest, LatestBlock, Ticker, Tx, TxInput, TxOut } from "./types";
 
 export const GetAddressInfo = async (address: string):Promise<Address | null> => {
     const url:string = `https://blockchain.info/rawaddr/${address}`;
@@ -32,7 +32,7 @@ export const GetTxInfo = async (hash: string):Promise<Tx | null> => {
 
             try{
                 const lastBlock:number = await GetLatestBlock();
-                data.confirmations = data.block_height ? lastBlock - data.block_height + 1 : 0;
+                data.confirmations = data.block_height && lastBlock>0 ? lastBlock - data.block_height + 1 : 0;
             } catch (e) {
             }
             return data;
@@ -45,12 +45,15 @@ export const GetTxInfo = async (hash: string):Promise<Tx | null> => {
 }
 
 export const GetLatestBlock = async ():Promise<number> => {
-    const url:string = `https://blockchain.info/latestblock`;
+    const url:string = `https://chain.api.btc.com/v3/block/latest`;
 
-    const res = await fetch(url);
-    const data:LatestBlock = await res.json();
-
-    return data.height;
+    try{
+        const res = await fetch(url);
+        const data:LatestBlockRequest = await res.json();
+        return data.data.height;
+    } catch (e) {
+        return 0;
+    }
 }
 
 export const GetTicker = async (curr:string):Promise<number> => {
